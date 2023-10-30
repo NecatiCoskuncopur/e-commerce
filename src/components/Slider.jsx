@@ -22,22 +22,24 @@ const Slider = ({ children, initialPerView, breakpoints }) => {
       <LeftButton onClick={() => sliderRef.current?.slidePrev()}>
         <FaArrowLeft />
       </LeftButton>
-      <StyledSwiper
-        onSwiper={(it) => (sliderRef.current = it)}
-        slidesPerView={initialPerView}
-        slidesPerGroup={initialPerView}
-        loop={true}
-        spaceBetween={30}
-        pagination={
-          isDesktop && {
-            clickable: true,
+      <SwiperWrapper>
+        <Swiper
+          onSwiper={(it) => (sliderRef.current = it)}
+          slidesPerView={initialPerView}
+          slidesPerGroup={initialPerView}
+          loop={true}
+          spaceBetween={30}
+          pagination={
+            isDesktop && {
+              clickable: true,
+            }
           }
-        }
-        breakpoints={breakpoints}
-        modules={[Pagination, Navigation]}
-      >
-        {children}
-      </StyledSwiper>
+          breakpoints={breakpoints}
+          modules={[Pagination, Navigation]}
+        >
+          {children}
+        </Swiper>
+      </SwiperWrapper>
       <RightButton onClick={() => sliderRef.current?.slideNext()}>
         <FaArrowRight />
       </RightButton>
@@ -104,6 +106,6 @@ const Container = styled.section`
   }
 `;
 
-const StyledSwiper = styled(Swiper)`
+const SwiperWrapper = styled.div`
   padding-bottom: 60px;
 `;
