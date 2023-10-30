@@ -38,12 +38,12 @@ export const categoryItems = [
   {
     id: 7,
     icon: <FaTooth />,
-    title: 'Dentaasdsadl Item',
+    title: 'Dental Item',
   },
   {
     id: 8,
     icon: <FaTooth />,
-    title: ' Item',
+    title: ' Dental Item',
   },
 ];
 
