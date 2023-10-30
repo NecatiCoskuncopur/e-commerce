@@ -61,6 +61,9 @@ const StyledSwiper = styled(Swiper)`
     background-color: ${colors.gossamer} !important;
     transform: scale(1.2);
   }
+  .swiper-wrapper {
+    box-sizing: border-box;
+  }
   @media ${device.laptop} {
     width: 100%;
     height: 480px;
