@@ -21,6 +21,7 @@ const CartProvider = ({ children }) => {
       image: item.image,
       name: item.name,
       price: item.price,
+      path: item.path,
     };
     const cartId = cartProducts.map((i) => i.id);
     if (cartId.indexOf(item.id) === -1) {
@@ -49,6 +50,7 @@ const CartProvider = ({ children }) => {
       image: item.image,
       name: item.name,
       price: item.price,
+      path: item.path,
     };
     const wishlistId = wishlist.map((i) => i.id);
     if (wishlistId.indexOf(item.id) === -1) {

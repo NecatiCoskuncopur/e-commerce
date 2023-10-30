@@ -48,8 +48,8 @@ const Info = ({ item }) => {
           <FaRegHeart /> <div>Add to Wishlist</div>
         </AddWishlist>
       ) : (
-        <AddWishlist>
-          <FaHeart color="red" /> <div>Add to Wishlist</div>
+        <AddWishlist onClick={() => cart.deleteFromWishlist(item.id)}>
+          <FaHeart color="red" /> <div>Delete From Wishlist</div>
         </AddWishlist>
       )}
       <hr />

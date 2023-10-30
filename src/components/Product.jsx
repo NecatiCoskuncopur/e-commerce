@@ -25,7 +25,7 @@ const Product = ({ item, grid = false }) => {
         </ImageWrapper>
       </NavLink>
       <IconWrapper>
-        <NavLink>
+        <NavLink to={`/products/${item.path}`}>
           <Icon>
             <FaEye />
           </Icon>
@@ -42,7 +42,10 @@ const Product = ({ item, grid = false }) => {
               <FaHeart />
             </Icon>
           ) : (
-            <Icon style={{ border: 0, color: 'red' }}>
+            <Icon
+              onClick={() => cart.deleteFromWishlist(item.id)}
+              style={{ border: 0, color: 'red' }}
+            >
               <FaHeart />
             </Icon>
           )}
