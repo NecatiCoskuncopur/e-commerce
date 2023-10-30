@@ -1,10 +1,11 @@
-import { PageBanner } from 'components';
+import { PageBanner, ProductsContent } from 'components';
 
 const Products = () => {
   return (
-    <div style={{ height: '500px' }}>
+    <>
       <PageBanner title="Shop" />
-    </div>
+      <ProductsContent />
+    </>
   );
 };
 

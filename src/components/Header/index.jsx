@@ -1,53 +1,71 @@
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import { styled } from 'styled-components';
 
-import { colors } from 'theme';
+import { products } from 'data';
+
 import Navbar from './Navbar';
+import Contact from './Contact';
+import MobileMenu from './MobileMenu';
+import Cart from './Cart';
 
 const Header = () => {
+  const [openModal, setOpenModal] = useState({ direction: '', isOpen: false });
+
   const location = useLocation();
 
-  const isHomePage = location.pathname === '/';
+  const cart = products.slice(0, 4);
+
+  const openModalHandler = (direction) => {
+    setOpenModal({
+      direction,
+      isOpen: true,
+    });
+  };
+
+  const closeModalHandler = () => {
+    setOpenModal(false);
+  };
+
+  useEffect(() => {
+    setOpenModal(false);
+  }, [location]);
+
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [openModal]);
 
   return (
-    <>
-      {isHomePage ? (
-        <StyledHeader>
-          <Navbar />
-          {/* <Span /> */}
-        </StyledHeader>
-      ) : (
-        <Wrapper>
-          <Navbar />
-        </Wrapper>
+    <Container>
+      <Contact />
+      <Navbar
+        openModalHandler={openModalHandler}
+        openModal={openModal}
+        data={cart}
+      />
+      {openModal.direction === 'left' && (
+        <MobileMenu
+          closeModalHandler={closeModalHandler}
+          openModal={openModal}
+        />
       )}
-    </>
+      {openModal.direction === 'right' && (
+        <Cart
+          closeModalHandler={closeModalHandler}
+          openModal={openModal}
+        />
+      )}
+    </Container>
   );
 };
 
 export default Header;
 
-const StyledHeader = styled.header`
-  height: 100vh;
-  position: relative;
-  top: 0;
-  left: 0;
-  background-color: ${colors.main};
+const Container = styled.header`
+  width: 100%;
+  margin-bottom: 40px;
 `;
-
-const Wrapper = styled.header`
-  background-color: ${colors.main};
-`;
-
-// const Span = styled.span`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   z-index: 1;
-//   background-image: url('/images/header-effect.svg');
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   width: 100%;
-//   height: 100%;
-//   opacity: 0.3;
-// `;

@@ -1,11 +1,11 @@
-import { Advantages, PageBanner } from 'components';
+import { AboutContent, PageBanner } from 'components';
 
 const About = () => {
   return (
-    <div>
+    <>
       <PageBanner title="About Us" />
-      <Advantages isAboutPage />
-    </div>
+      <AboutContent />
+    </>
   );
 };
 

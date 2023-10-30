@@ -1,11 +1,19 @@
 import { useParams } from 'react-router-dom';
 
-const Product = ({ data }) => {
-  const { id } = useParams();
-  const item = data.find((item) => item.id === id);
+import { products } from 'data';
+import { PageBanner, ProductDetailsContent } from 'components';
 
-  console.log(item);
-  return <div>{item?.model}</div>;
+const Product = () => {
+  const { path } = useParams();
+
+  const item = products.find((item) => item?.path === path);
+
+  return (
+    <>
+      <PageBanner title={item.name} />
+      <ProductDetailsContent item={item} />
+    </>
+  );
 };
 
 export default Product;

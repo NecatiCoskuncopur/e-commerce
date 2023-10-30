@@ -1,12 +1,19 @@
-import { Advantages, Products, TopSale } from 'components';
+import { ActionArea, Categories, Container, Features, NewsList, ProductList, SliderArea } from 'components';
 
-const Home = ({ products }) => {
+const Home = () => {
   return (
-    <div>
-      <Advantages />
-      <Products products={products} />
-      <TopSale products={products} />
-    </div>
+    <>
+      <Container>
+        <SliderArea />
+        <Categories />
+        <ProductList />
+      </Container>
+      <ActionArea />
+      <Container>
+        <NewsList />
+      </Container>
+      <Features />
+    </>
   );
 };
 

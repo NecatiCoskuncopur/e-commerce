@@ -1,75 +1,74 @@
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { colors, device } from 'theme';
+import { device } from 'theme';
 
-const Title = ({ text, type, isLight = false, isPrice = false }) => {
-  return (
-    <StyledTitle
-      isLight={isLight}
-      variant={type}
-    >
-      {isPrice ? `$${text}` : text}
-    </StyledTitle>
-  );
+const Title = ({ children, type }) => {
+  return <StyledTitle variant={type}>{children}</StyledTitle>;
 };
 
 export default Title;
 
 const StyledTitle = styled.h1`
-  font-family: 'Teko', sans-serif;
-  font-style: normal;
-  line-height: 1;
-  letter-spacing: 0;
-
-  ${({ isLight }) => (isLight ? `color: ${colors.main}` : `color: ${colors.mirage}`)};
-
+  line-height: 1.3;
+  color: inherit;
   ${(p) =>
     p.variant === 'xs' &&
     css`
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 26px;
+      margin-bottom: 5px;
+      font-size: 16px;
       @media ${device.tablet} {
-        font-size: 16px;
+        font-size: 14px;
       }
     `};
   ${(p) =>
     p.variant === 'sm' &&
     css`
-      font-size: 24px;
-      font-weight: 500;
+      font-size: 18px;
       @media ${device.tablet} {
-        font-size: 20px;
+        font-size: 16px;
       }
     `};
   ${(p) =>
     p.variant === 'md' &&
     css`
-      font-size: 36px;
-      margin-bottom: 30px;
-      font-weight: 500;
+      font-size: 20px;
+      margin-bottom: 5px;
+      @media ${device.laptop} {
+        font-size: 18px;
+      }
     `};
   ${(p) =>
     p.variant === 'lg' &&
     css`
-      font-size: 40px;
+      font-size: 22px;
       font-weight: 600;
-      margin-bottom: 52px;
-      text-transform: uppercase;
-      @media ${device.tablet} {
-        font-size: 30px;
-        margin-bottom: 36px;
-      }
+      margin-bottom: 15px;
     `};
   ${(p) =>
     p.variant === 'xl' &&
     css`
-      font-size: 70px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: ${colors.candleLight};
+      font-size: 38px;
+      margin-bottom: 15px;
+      @media ${device.desktop} {
+        font-size: 36px;
+      }
+      @media ${device.laptop} {
+        font-size: 26px;
+      }
       @media ${device.tablet} {
-        font-size: 40px;
+        font-size: 24px;
+      }
+    `};
+  ${(p) =>
+    p.variant === 'xxl' &&
+    css`
+      font-size: 44px;
+      margin-bottom: 15px;
+      @media ${device.desktop} {
+        font-size: 30px;
+      }
+      @media ${device.tablet} {
+        font-size: 24px;
       }
     `};
 `;

@@ -1,57 +1,62 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
 
 import { Footer, Header } from 'components';
-import { About, Basket, Products, Home, Wishlist, Product } from 'pages';
+import { About, Cart, Checkout, Contact, Home, News, NewsDetail, Product, Products, Wishlist } from 'pages';
+
+import CartProvider from 'context/CartContext';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('https://64acabe19edb4181202fb3bb.mockapi.io/products')
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log('error', err);
-      });
-  }, []);
-
   return (
-    <div>
-      <BrowserRouter>
+    <CartProvider>
+      <main>
         <Header />
         <Routes>
           <Route
             index
-            element={<Home products={products} />}
+            element={<Home />}
           />
+
           <Route
             path="about"
             element={<About />}
           />
-          <Route
-            path="basket"
-            element={<Basket />}
-          />
+
           <Route
             path="products"
             element={<Products />}
+          />
+          <Route
+            path="/products/:path"
+            element={<Product />}
+          />
+          <Route
+            path="news"
+            element={<News />}
+          />
+          <Route
+            path="/news/:id"
+            element={<NewsDetail />}
+          />
+          <Route
+            path="contact"
+            element={<Contact />}
           />
           <Route
             path="wishlist"
             element={<Wishlist />}
           />
           <Route
-            path="/products/:id"
-            element={<Product data={products} />}
+            path="cart"
+            element={<Cart />}
+          />
+          <Route
+            path="checkout"
+            element={<Checkout />}
           />
         </Routes>
         <Footer />
-      </BrowserRouter>
-    </div>
+      </main>
+    </CartProvider>
   );
 };
 
