@@ -19,35 +19,39 @@ const Slider = () => {
       }}
       modules={[Pagination, EffectFade]}
     >
-      <FirstSlide>
-        <Content>
-          <SubTitle variant="green">
-            <Title type="xs">Up To 50% Off Today Only!</Title>
-          </SubTitle>
-          <Title type="xl">
-            Gold Standard <br /> Pre-Workout
-          </Title>
-          <SubTitle>
-            <Title type="sm">Starting at $16.99</Title>
-          </SubTitle>
-          <Button>
-            <NavLink to="/products">Shop Now</NavLink>
-          </Button>
-        </Content>
-      </FirstSlide>
-      <SecondSlide>
-        <Content>
-          <SubTitle variant="green">
-            <Title type="xs">WELCOME TO OUR SHOP</Title>
-          </SubTitle>
-          <Title type="xl">
-            Gold Standard <br /> Pre-Workout
-          </Title>
-          <Button>
-            <NavLink to="/products">Shop Now</NavLink>
-          </Button>
-        </Content>
-      </SecondSlide>
+      <SwiperSlide>
+        <FirstSlide>
+          <Content>
+            <SubTitle variant="green">
+              <Title type="xs">Up To 50% Off Today Only!</Title>
+            </SubTitle>
+            <Title type="xl">
+              Gold Standard <br /> Pre-Workout
+            </Title>
+            <SubTitle>
+              <Title type="sm">Starting at $16.99</Title>
+            </SubTitle>
+            <Button>
+              <NavLink to="/products">Shop Now</NavLink>
+            </Button>
+          </Content>
+        </FirstSlide>
+      </SwiperSlide>
+      <SwiperSlide>
+        <SecondSlide>
+          <Content>
+            <SubTitle variant="green">
+              <Title type="xs">WELCOME TO OUR SHOP</Title>
+            </SubTitle>
+            <Title type="xl">
+              Gold Standard <br /> Pre-Workout
+            </Title>
+            <Button>
+              <NavLink to="/products">Shop Now</NavLink>
+            </Button>
+          </Content>
+        </SecondSlide>
+      </SwiperSlide>
     </StyledSwiper>
   );
 };
@@ -61,16 +65,13 @@ const StyledSwiper = styled(Swiper)`
     background-color: ${colors.gossamer} !important;
     transform: scale(1.2);
   }
-  .swiper-wrapper {
-    box-sizing: border-box;
-  }
   @media ${device.laptop} {
     width: 100%;
     height: 480px;
   }
 `;
 
-const FirstSlide = styled(SwiperSlide)`
+const FirstSlide = styled.div`
   width: 100%;
   height: 100%;
   background-image: url('/images/slider-1.png');
