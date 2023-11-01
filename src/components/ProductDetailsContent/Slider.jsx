@@ -38,12 +38,14 @@ const Slider = ({ item }) => {
         modules={[FreeMode, Thumbs]}
       >
         {item.detailImage.map((item, index) => (
-          <Thumb key={index}>
-            <img
-              src={item}
-              alt="Product Detail"
-            />
-          </Thumb>
+          <SwiperSlide key={index}>
+            <Thumb active={index}>
+              <img
+                src={item}
+                alt="Product Detail"
+              />
+            </Thumb>
+          </SwiperSlide>
         ))}
       </Swiper>
     </Container>
@@ -62,15 +64,13 @@ const Container = styled.div`
   }
 `;
 
-const Thumb = styled(SwiperSlide)`
-  &.swiper-slide-thumb-active {
-    border: 1px solid ${colors.gossamer};
-  }
+const Thumb = styled.div`
   margin-top: 20px;
   margin-bottom: 10px;
   width: 85px;
   height: 110px;
   padding: 0;
+  cursor: pointer;
   img {
     width: 100%;
     height: 100%;
